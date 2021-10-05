@@ -1,14 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect, useState } from "react";
+import { getTime } from "./network";
+
+// import getTime
+// hooks: useState  -> involve an array (tuple)
+//        useEffect -> access or modify something outside of
+//                     the scope of this function
 
 function App() {
+  const [currentTime, setCurrentTime] = useState("cat cow");
+
+  useEffect(() => {
+    async function thing() {
+      const time = await getTime();
+      setCurrentTime(time);
+    }
+    thing();
+  });
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>{currentTime}</p>
         <a
           className="App-link"
           href="https://reactjs.org"
