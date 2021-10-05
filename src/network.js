@@ -1,3 +1,15 @@
+import axios from "axios";
+
 export async function getTime() {
-  return Promise.resolve("It's 2021-10-05T21:08:24+0900");
+  return axios
+    .get("/api")
+    .then(function (response) {
+      // handle success
+      console.log(response);
+      return response.data;
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
 }

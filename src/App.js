@@ -14,10 +14,11 @@ function App() {
   useEffect(() => {
     async function thing() {
       const time = await getTime();
+      console.log({ time });
       setCurrentTime(time);
     }
     thing();
-  });
+  }, []);
 
   return (
     <div className="App">
